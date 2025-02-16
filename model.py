@@ -74,7 +74,7 @@ class NeuralNetwork:
 
     def SGD(self, grad: dict, batch_size: int, l_rate: float):
         '''
-            Calculate the unbiased estimator of GD
+            Calculates the unbiased estimator of GD
             w′ = w − η / n * ∂C / ∂w
             b′ = b − η / n * ∂C / ∂b
         '''
@@ -120,9 +120,9 @@ class NeuralNetwork:
 
     def plot_prediction(self, x: np.array) -> None:
         labels: list[str] = ['T-shirt/top', 'Trouser', 'Pullover', 'Dress', 'Coat', 'Sandal', 'Shirt', 'Sneaker', 'Bag', 'Ankle boot']
-        pred: int = np.argmax(self.forward(np.reshape(x, (1, 784))).T, axis=1)
-        plt.title(labels[pred[0]])
-        plt.imshow(np.reshape(x, (28, 28)), cmap="gray")
+        pred: int = np.argmax(self.forward(np.reshape(x, (1, 784))).T, axis=1)[0]
+        plt.title(labels[pred])
+        plt.imshow(np.reshape(x, (28, 28)), cmap='gray')
         plt.show()
 
 if __name__ == "__main__":
